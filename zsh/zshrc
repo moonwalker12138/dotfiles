@@ -3,7 +3,6 @@
 
 # Path to your oh-my-zsh installation.
   export ZSH="/home/yf/.oh-my-zsh"
-  export PATH="/home/yf/bin:/home/yf/usr/anaconda3/bin:$PATH"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -64,11 +63,8 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(z vi-mode zsh-autosuggestions zsh-syntax-highlighting)
-
-[[ -s /home/yf/.autojump/etc/profile.d/autojump.sh ]] && source /home/yf/.autojump/etc/profile.d/autojump.sh
-
-autoload -U compinit && compinit -u
+# plugins=(z zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(z command-not-found colored-man-pages) 
 
 source $ZSH/oh-my-zsh.sh
 
@@ -123,6 +119,12 @@ function cd(){
     ls
 }
 
+prompt_context() {
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment 202 0 "%(!.%{%F{yellow}%}.)%n@%m"
+    # prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m"
+  fi
+}
 # Status:
 # - was there an error
 # - am I root
@@ -163,11 +165,5 @@ build_prompt() {
   prompt_hg
   prompt_end
 }
-
-
-
-
-export iterm2_hostname="192.168.23.51"
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 set -o emacs
