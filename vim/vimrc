@@ -98,56 +98,77 @@ noremap <silent><leader>0 :b! 10<cr>
 " noremap <silent><s-tab> :bn<CR>
 " inoremap <silent><s-tab> <ESC>:tabnext<CR>
 
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugins')
 
-set nocompatible              " required
-filetype off                  " required
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'scrooloose/nerdtree'
-"Plugin 'Lokaltog/vim-powerline'
-Plugin 'luochen1990/rainbow'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'skywind3000/asyncrun.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-Plugin 'rizzatti/dash.vim'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'majutsushi/tagbar'
-" Plugin 'vim-syntastic/syntastic'
-" Plugin 'chrisbra/csv.vim'
-"Plugin 'vim-vdebug/vdebug'
-" Plugin 'airblade/vim-gitgutter'
-" Plugin 'Raimondi/delimitMate' 
-Plugin 'tpope/vim-commentary'
-" Plugin 'SirVer/ultisnips'
-" Plugin 'honza/vim-snippets'
-Plugin 'tpope/vim-surround'
-" Plugin 'w0rp/ale'
-" Plugin 'klen/python-mode'
-" Plugin 'ervandew/supertab'
-" Plugin 'davidhalter/jedi-vim'
-" Plugin 'tbodt/deoplete-tabnine'
-" Plugin 'maralla/completor.vim'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'guns/xterm-color-table.vim'
-Plugin 'chrisbra/csv.vim'
-Plugin 'iamcco/markdown-preview.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+" Make sure you use single quotes
 
-" if globpathgc( substitute($PATH, ':', ',', 'g'), 'python3' ) != '' " if you had install python3
-"         " ################ for python3 >= 3.4 ###############
-"     let $PYTHONPATH .= vundle#bundle_dir.'/vim_pyclewn/usr/lib64/python3.4/site-packages' " search path for module files
-"     let g:pyclewn_python = 'python3'    " python3 version must >= 3.4
-" else
-"         " ################ for python2.7 ####################
-"     let $PYTHONPATH .= vundle#bundle_dir.'/vim_pyclewn/usr/lib64/python2.7/site-packages' " search path for module files
-" endif
-" Plugin 'clwu88/vim_pyclewn'         " Make pyclewn can be installed though vbundle
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
 
-call vundle#end()            " required
+" Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Multiple " Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | " Plug 'honza/vim-snippets'
+
+" On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Using a non-master branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
+
+" " Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" " Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Unmanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
+
+
+Plug 'scrooloose/nerdtree'
+"Plug 'Lokaltog/vim-powerline'
+Plug 'luochen1990/rainbow'
+Plug 'Valloric/YouCompleteMe'
+Plug 'skywind3000/asyncrun.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'majutsushi/tagbar'
+" Plug 'vim-syntastic/syntastic'
+" Plug 'chrisbra/csv.vim'
+"Plug 'vim-vdebug/vdebug'
+" Plug 'airblade/vim-gitgutter'
+" Plug 'Raimondi/delimitMate' 
+Plug 'tpope/vim-commentary'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+Plug 'tpope/vim-surround'
+" Plug 'w0rp/ale'
+" Plug 'klen/python-mode'
+" Plug 'ervandew/supertab'
+" Plug 'davidhalter/jedi-vim'
+" Plug 'tbodt/deoplete-tabnine'
+" Plug 'maralla/completor.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'guns/xterm-color-table.vim'
+Plug 'chrisbra/csv.vim'
+Plug 'iamcco/markdown-preview.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+" Initialize plugin system
+call plug#end()
+
 filetype plugin indent on    " required
 
 syntax on
