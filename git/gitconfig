@@ -1,0 +1,8 @@
+[user]
+	email = 294948563@qq.com
+	name = Yang Fan
+[core]
+	editor = vim
+	pager = cat
+[merge]
+	tool = vimdiff

@@ -1,7 +1,10 @@
 " Configuration file for vim
 set modelines=0		" CVE-2007-2438
-colorscheme molokai
-" colorscheme solarized
+" colorscheme molokai
+" colorscheme solarized8_flat
+" let g:solarized_termcolors=256
+colorscheme solarized
+set background=dark
 " Normally we use vim-extensions. If you want true vi-compatibility
 " remove change the following statements
 set nocompatible	" Use Vim defaults instead of 100% vi compatibility
@@ -137,7 +140,9 @@ call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdtree'
 "Plug 'Lokaltog/vim-powerline'
 Plug 'luochen1990/rainbow'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
+Plug 'davidhalter/jedi-vim'
+Plug 'ervandew/supertab'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
@@ -176,16 +181,16 @@ syntax on
 
 "let g:Powerline_symbols = 'fancy'
 set encoding=utf-8 
-set laststatus=2
+" set laststatus=2
 
 " colorscheme-molokai config
-let g:molokai_original = 1
-let g:rehash256 = 1
+" let g:molokai_original = 1
+" let g:rehash256 = 1
 
 " monokai config
 " set termguicolors
-let g:monokai_term_italic = 1
-let g:monokai_gui_italic = 1
+" let g:monokai_term_italic = 1
+" let g:monokai_gui_italic = 1
 
 " rainbow config
 let g:rainbow_active = 1
@@ -457,6 +462,11 @@ imap <silent> <F7> <Plug>StopMarkdownPreview
 
 " vim-markdown config
 let g:vim_markdown_folding_disabled = 1
+
+" supertab config
+" let g:SuperTabDefaultCompletionType = "<c-n>"
+" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " important!!!! The command below must be placed at the end of the .vimrc file
 set noesckeys
