@@ -35,3 +35,5 @@ if [ -f $HOME/.gitignore ]; then
 	mv $HOME/.gitignore $HOME/.gitignore_backup
 fi
 ln -s $HOME/.dotfiles/git/gitignore $HOME/.gitignore
+
+echo "bye!"
