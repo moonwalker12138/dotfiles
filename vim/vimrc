@@ -170,6 +170,7 @@ Plug 'chrisbra/csv.vim'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'edkolev/tmuxline.vim'
 
 " Initialize plugin system
 call plug#end()
