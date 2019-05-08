@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# Multiple-OS Settings
 if [ `uname` = "Linux" ]; then
     # all linux server config
     export ANACONDAPATH=$HOME/app/anaconda3
@@ -11,13 +12,13 @@ if [ `uname` = "Linux" ]; then
             export PATH=$ANACONDAPATH/bin:$PATH
         ;;
         "elmo")
-            export PATH=$ANACONDAPATH/bin:$PATH
+            export JAVA_HOME=/usr/java/jre1.8.0_211
+            export PATH=$JAVA_HOME/bin:$ANACONDAPATH/bin:$PATH
         ;;
         "xenial-165")
             export PATH=$ANACONDAPATH/bin:$PATH
         ;;
         "iZbp11i2v86dja5a7kn5apZ")
-            echo "openkg"
 		;;
     esac
 elif [ `uname` = "Darwin" ]; then
