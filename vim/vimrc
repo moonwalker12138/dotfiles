@@ -207,6 +207,20 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " majutsushi/tagbar Settings
 nmap <F8> :TagbarToggle<CR>
 
+" easymotion/vim-easymotion Settings
+map <tab> <Plug>(easymotion-prefix)
+" Gif config
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+" These `n` & `N` mappings are options. You do not have to map `n` & `N` to EasyMotion.
+" Without these mappings, `n` & `N` works fine. (These mappings just provide
+" different highlight method and have some other features )
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-s)
+vmap s <Plug>(easymotion-s)
+
 " SirVer/ultisnips Settings
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<c-s-c>"
