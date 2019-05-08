@@ -1,106 +1,6 @@
-" Configuration file for vim
-set modelines=0		" CVE-2007-2438
-colorscheme molokai
-" colorscheme solarized8_flat
-" let g:solarized_termcolors=256
-" colorscheme solarized
-" set background=dark
-" Normally we use vim-extensions. If you want true vi-compatibility
-" remove change the following statements
 set nocompatible	" Use Vim defaults instead of 100% vi compatibility
-set backspace=2		" more powerful backspacing
 
-" Don't write backup file if vim is being called by "crontab -e"
-au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
-" Don't write backup file if vim is being called by "chpass"
-au BufWrite /private/etc/pw.* set nowritebackup nobackup
-
-let skip_defaults_vim=1
-set nu!
-set autoindent
-set cursorline
-
-" set timeoutlen=100 ttimeoutlen=0
-
-" key map
-" nnoremap <c-cr> -
-nnoremap <silent><backspace> :nohl<cr>
-" nnoremap ; :
-" inoremap <c-=> <c-r>=
-" nnoremap 1 0
-" nnoremap 2 ^
-" nnoremap 9 $
-" nnoremap 0 g_
-
-" 设置vim中默认使用选择缓冲区寄存器 "*
-set clipboard=unnamed
-
-" search config
-set ignorecase
-set hlsearch
-set incsearch
-set smartcase
-
-" vim自动切换工作目录为当前文件所在目录
-set autochdir
-
-" 将光标所在行置于屏幕中间
-" set scrolloff=999
-" " 将光标所在行置于屏幕中间
-" set nowrap 
-" set sidescrolloff=999
-
-" disable bcakup and swap files
-set nobackup       " no backup files
-set noswapfile     " no swap files
-set nowritebackup  " only in case you don't want a backup file while editing
-set noundofile     " no undo files
-
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-
-set mouse=a
-
-"set paste
-set pastetoggle=<F10>
-
-" autoload _vimrc
-" autocmd bufwritepost Users/yf/.vimrc source %
-
-" keys to move around the windows
-map <c-h> <c-w>h
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-
-
-
-"tab 
-" noremap <silent><tab>m :tabnew<cr>
-" noremap <silent><tab>e :tabclose<cr>
-" noremap <silent><tab>n :tabn<cr>
-" noremap <silent><tab>p :tabp<cr>
-" noremap <silent><leader>t :tabnew<cr>
-" noremap <silent><leader>g :tabclose<cr>
-" noremap <silent><tab>[ :bp<cr>
-" noremap <silent><tab>] :bn<cr>
-noremap <silent><leader>[ :bp<cr>
-noremap <silent><leader>] :bn<cr>
-noremap <silent><leader>1 :b! 1<cr>
-noremap <silent><leader>2 :b! 2<cr>
-noremap <silent><leader>3 :b! 3<cr>
-noremap <silent><leader>4 :b! 4<cr>
-noremap <silent><leader>5 :b! 5<cr>
-noremap <silent><leader>6 :b! 6<cr>
-noremap <silent><leader>7 :b! 7<cr>
-noremap <silent><leader>8 :b! 8<cr>
-noremap <silent><leader>9 :b! 9<cr>
-noremap <silent><leader>0 :b! 10<cr>
-" noremap <silent><s-tab> :bn<CR>
-" inoremap <silent><s-tab> <ESC>:tabnext<CR>
-
+" ==> Plugins ------------------------------------------------------------------
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -108,117 +8,42 @@ call plug#begin('~/.vim/plugins')
 
 " Make sure you use single quotes
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Multiple " Plug commands can be written in a single line using | separators
-" Plug 'SirVer/ultisnips' | " Plug 'honza/vim-snippets'
-
-" On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-master branch
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go', { 'tag': '*' }
-
-" " Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" " Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-" Plug '~/my-prototype-plugin'
-
-
+" Fundamental
 Plug 'scrooloose/nerdtree'
-"Plug 'Lokaltog/vim-powerline'
-Plug 'luochen1990/rainbow'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'majutsushi/tagbar'
-" Plug 'vim-syntastic/syntastic'
-" Plug 'chrisbra/csv.vim'
-"Plug 'vim-vdebug/vdebug'
-" Plug 'airblade/vim-gitgutter'
-" Plug 'Raimondi/delimitMate' 
-Plug 'tpope/vim-commentary'
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-Plug 'tpope/vim-surround'
-" Plug 'w0rp/ale'
-" Plug 'klen/python-mode'
-" Plug 'ervandew/supertab'
-" Plug 'davidhalter/jedi-vim'
-" Plug 'tbodt/deoplete-tabnine'
-" Plug 'maralla/completor.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'guns/xterm-color-table.vim'
-Plug 'chrisbra/csv.vim'
-Plug 'iamcco/markdown-preview.vim'
+Plug 'Yggdroot/indentLine'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+
+" Productive
+Plug 'tpope/vim-commentary'
+Plug 'easymotion/vim-easymotion'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+
+" Appearance
+Plug 'luochen1990/rainbow'
+Plug 'vim-airline/vim-airline'
 Plug 'edkolev/tmuxline.vim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Funny
+Plug 'guns/xterm-color-table.vim'
 
 " Initialize plugin system
 call plug#end()
+filetype plugin indent on    
 
-filetype plugin indent on    " required
+" ==> Plugin Settings ----------------------------------------------------
 
-syntax on
-
-
-"let g:Powerline_symbols = 'fancy'
-set encoding=utf-8 
-" set laststatus=2
-
-" colorscheme-molokai config
-" let g:molokai_original = 1
-" let g:rehash256 = 1
-
-" monokai config
-" set termguicolors
-" let g:monokai_term_italic = 1
-" let g:monokai_gui_italic = 1
-
-" rainbow config
-let g:rainbow_active = 1
-let g:rainbow_conf = {
-	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
-	\	'operators': '_,_',
-	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-	\	'separately': {
-	\		'*': {},
-	\		'tex': {
-	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
-	\		},
-	\		'lisp': {
-	\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
-	\		},
-	\		'vim': {
-	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
-	\		},
-	\		'html': {
-	\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
-	\		},
-	\		'css': 0,
-	\	}
-	\}
-
-" NERDTree config
+" NERDTree Settings
 " open a NERDTree automatically when vim starts up
 "autocmd vimenter * NERDTree
 "open a NERDTree automatically when vim starts up if no files were specified
@@ -241,12 +66,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
-" AsyncRun config
+" AsyncRun Settings
 let g:asyncrun_open = 8
 noremap <leader>r :w \| AsyncRun python %<cr>
 noremap <leader>s :AsyncStop<cr>
 
-" ctrlp config
+" ctrlp Settings
 " Change the default mapping and the default command to invoke CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -263,7 +88,7 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " Use a custom file listing command
 let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 
-" vim-airline config
+" vim-airline Settings
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -280,11 +105,11 @@ nnoremap <leader>[ :bp<CR>
 "let g:airline_symbols.branch = '⭠'
 "let g:airline_symbols.readonly = '⭤'
 
-" YCM config
+" YCM Settings
 " 关闭补全的提示
 set completeopt=menu,menuone
 let g:ycm_add_preview_to_completeop = 0
-let g:ycm_python_binary_path = '/home/yf/usr/anaconda3/bin/python'
+let g:ycm_python_binary_path = '$ANACONDAPATH/bin/python'
 " C family Completion Path
 " let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 " 跳转快捷键
@@ -328,16 +153,14 @@ let g:ycm_filetype_whitelist = {
 			\ "vim":1,
 			\ }
 
-"map <F5> :w<cr>:r!python %<cr>
-
-" Dash config
+" Dash Settings
 :nmap <silent> <leader>d <Plug>DashSearch
 let g:dash_activate = 1
 let g:dash_map = {
         \ 'python' : ['Python\ 3', 'Python\ 2','Beautiful\ Soup','NumPy','TensorFlow','Pandas','torchvision','PyTorch','Matplotlib']
         \ }
 
-" nerd_git config
+" nerd_git Settings
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
@@ -351,22 +174,40 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
+" rainbow config
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+	\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+	\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+	\	'operators': '_,_',
+	\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+	\	'separately': {
+	\		'*': {},
+	\		'tex': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+	\		},
+	\		'lisp': {
+	\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+	\		},
+	\		'vim': {
+	\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+	\		},
+	\		'html': {
+	\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+	\		},
+	\		'css': 0,
+	\	}
+	\}
 
-"majutsushi/tagbar config
+" supertab config
+" let g:SuperTabDefaultCompletionType = "<c-n>"
+" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+
+" majutsushi/tagbar Settings
 nmap <F8> :TagbarToggle<CR>
 
-"vim-syntastic/syntastic config
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_python_checkers = ['python']
-
-"SirVer/ultisnips config
+" SirVer/ultisnips Settings
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 " let g:UltiSnipsExpandTrigger="<c-s-c>"
 " let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -376,98 +217,78 @@ nmap <F8> :TagbarToggle<CR>
 " let g:UltiSnipsEditSplit="vertical"
 
 
-"" Python-mode config
-"" Activate rope
-"" Keys:
-"" K             Show python docs
-"" <Ctrl-Space>  Rope autocomplete
-"" <Ctrl-c>g     Rope goto definition
-"" <Ctrl-c>d     Rope show documentation
-"" <Ctrl-c>f     Rope find occurrences
-"" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-"" [[            Jump on previous class or function (normal, visual, operator modes)
-"" ]]            Jump on next class or function (normal, visual, operator modes)
-"" [M            Jump on previous class or method (normal, visual, operator modes)
-"" ]M            Jump on next class or method (normal, visual, operator modes)
-"let g:pymode_rope = 0
+" ==> General Settings ------------------------------------------------
 
-"" Documentation
-"let g:pymode_doc = 1
-"let g:pymode_doc_key = 'K'
+syntax on
+set modelines=0		
+set backspace=2		" more powerful backspacing
+set nu!
+set autoindent
+set cursorline
+set clipboard=unnamed " 设置vim中默认使用选择缓冲区寄存器 "*
+set autochdir " vim自动切换工作目录为当前文件所在目录
+set mouse=a
+set pastetoggle=<F10>
+set encoding=utf-8 
+" set laststatus=2
 
-""Linting
-"" let g:pymode_lint = 1
-"" let g:pymode_lint_checker = "pyflakes,pep8"
-"" Auto check on save
-"" let g:pymode_lint_write = 1
+" colorscheme
+colorscheme molokai
+" colorscheme solarized8_flat
+" let g:solarized_termcolors=256
+" colorscheme solarized
+" set background=dark
 
-"" Support virtualenv
-"let g:pymode_virtualenv = 1
+" colorscheme-molokai config
+" let g:molokai_original = 1
+" let g:rehash256 = 1
 
-"" Enable breakpoints plugin
-"let g:pymode_breakpoint = 1
-"let g:pymode_breakpoint_bind = '<leader>b'
+" monokai config
+" set termguicolors
+" let g:monokai_term_italic = 1
+" let g:monokai_gui_italic = 1
 
-"" syntax highlighting
-"let g:pymode_syntax = 1
-"let g:pymode_syntax_all = 1
-"let g:pymode_syntax_indent_errors = g:pymode_syntax_all
-"let g:pymode_syntax_space_errors = g:pymode_syntax_all
+" search 
+set ignorecase
+set hlsearch
+set incsearch
+set smartcase
 
-"" Don't autofold code
-"let g:pymode_folding = 0
+" disable backup and swap files
+set nobackup       " no backup files
+set noswapfile     " no swap files
+set nowritebackup  " only in case you don't want a backup file while editing
+set noundofile     " no undo files
 
-""
-""let g:pymode_python = 'python3'
+" tab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
-""开启python-mode定义的移动方式
-"let g:pymode_motion = 1
 
-""maralla/completor.vim config
-"" let g:completor_python_binary = '/Users/yf/anaconda3/bin/python'
+" ==> Key mapping -----------------------------------------------------------------
+nnoremap <silent><backspace> :nohl<cr>
 
-""Use Tab to select completion
-"" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>
+" keys to move around the windows
+inoremap <c-h> <left>
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+inoremap <c-l> <right>
 
-""Use Tab to trigger completion (disable auto trigger)
-"" let g:completor_auto_trigger = 0
-"" inoremap <expr> <Tab> pumvisible() ? "<C-N>" : "<C-R>=completor#do('complete')<CR>"
-
-"yapf--A formatter for Python files
-autocmd FileType python nnoremap <silent><leader>= :0,$!yapf<CR>
-
-" chrisbra/csv.vim config
-" delimiter
-" let g:csv_delim=','
-" Highlighting Group
-let g:csv_highlight_column = 'y'
-" performance
-let g:csv_start = 1
-let g:csv_end = 100
-" conceal delimiter
-let g:csv_no_conceal = 1
-" highlight
-let g:csv_hiGroup = "IncSearch"
-
-" iamcco/markdown-preview.vim config
-" for normal mode
-nmap <silent> <F6> <Plug>MarkdownPreview
-" for insert mode
-imap <silent> <F6> <Plug>MarkdownPreview
-" for normal mode
-nmap <silent> <F7> <Plug>StopMarkdownPreview
-" for insert mode
-imap <silent> <F7> <Plug>StopMarkdownPreview
-
-" vim-markdown config
-let g:vim_markdown_folding_disabled = 1
-
-" supertab config
-" let g:SuperTabDefaultCompletionType = "<c-n>"
-" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+" switch buffers
+noremap <silent><leader>[ :bp<cr>
+noremap <silent><leader>] :bn<cr>
+noremap <silent><leader>1 :b! 1<cr>
+noremap <silent><leader>2 :b! 2<cr>
+noremap <silent><leader>3 :b! 3<cr>
+noremap <silent><leader>4 :b! 4<cr>
+noremap <silent><leader>5 :b! 5<cr>
+noremap <silent><leader>6 :b! 6<cr>
+noremap <silent><leader>7 :b! 7<cr>
+noremap <silent><leader>8 :b! 8<cr>
+noremap <silent><leader>9 :b! 9<cr>
+noremap <silent><leader>0 :b! 10<cr>
 
 " important!!!! The command below must be placed at the end of the .vimrc file
 set noesckeys

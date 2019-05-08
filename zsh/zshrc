@@ -207,3 +207,5 @@ build_prompt() {
 set -o emacs
 
 bindkey '^ ' autosuggest-accept
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
