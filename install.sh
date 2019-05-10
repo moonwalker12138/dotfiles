@@ -1,16 +1,16 @@
 #!/bin/bash
 
 user-install(){
-    read -p "install $1? (Y/N): " confirm
+    read -p "[user-install]install $1? (Y/N): " confirm
     if [[ $confirm =~ ^[Yy]$ ]]; then
         if [ -d $2 ]; then
             read -p "[user-install]$1 has already been installed, reinstall? (Y/N): " confirm
             if [[ $confirm =~ ^[Yy]$ ]]; then
                 rm -rf $2
-                $3
+                eval $3
             fi
         else
-            $3
+            eval $3
         fi
         if [ $? -ne 0 ]; then
             echo "[user-install]$1 installation failed!"
@@ -22,17 +22,18 @@ user-install(){
 }
 
 user-link(){
-    read -p "create a symbolic link '$2' to '$1'" confirm
+    echo $1 $2
+    read -p "create a symbolic link '$2' to '$1'? (Y/N): " confirm
     if [[ $confirm =~ ^[Yy]$ ]]; then
         if [ -f $2 ]; then
             mv $2 $2.backup
-            ln -s $1 $2
-            if [ $? -ne 0 ]; then
-                echo "[user-link]create a symbolic link '$2' to '$1' failed!"
-                exit 1
-            else
-                echo "[user-link]create a symbolic link '$2' to '$1' succeeded!"
-            fi
+	fi
+        ln -fs $1 $2
+        if [ $? -ne 0 ]; then
+            echo "[user-link]create a symbolic link '$2' to '$1' failed!"
+            exit 1
+        else
+            echo "[user-link]create a symbolic link '$2' to '$1' succeeded!"
         fi
     fi
 }
@@ -40,12 +41,11 @@ user-link(){
 DOTFILES=$HOME/.dotfiles
 # ==> oh-my-zsh installation ------------------------------------------------
 echo "==> zsh settings ---------------------------------------"
-user-install "oh-my-zsh" "$HOME/.oh-my-zsh" "sh -c '$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)'"
-user-install "zsh-syntax-highlighting" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-user-install "zsh-autosuggestions" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
-"git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-user-link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
-source $HOME/.zshrc
+user-install "oh-my-zsh" "$HOME/.oh-my-zsh" 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+#user-install "zsh-syntax-highlighting" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+#user-install "zsh-autosuggestions" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+#user-link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
+#source $HOME/.zshrc
 
 # # ==> dotfiles settings ----------------------------------------------------
 # for file in `find $HOME/.dotfiles -name '*.symlink'`
@@ -129,4 +129,3 @@ source $HOME/.zshrc
 # ln -s $HOME/.dotfiles/git/gitignore $HOME/.gitignore
 
 # echo "bye!"
-
