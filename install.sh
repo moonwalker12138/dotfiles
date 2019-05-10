@@ -3,7 +3,7 @@
 user-install(){
     read -p "[user-install]install $1? (Y/N): " confirm
     if [[ $confirm =~ ^[Yy]$ ]]; then
-        if [ -d $2 ]; then
+        if [ $2 ]; then
             read -p "[user-install]$1 has already been installed, reinstall? (Y/N): " confirm
             if [[ $confirm =~ ^[Yy]$ ]]; then
                 rm -rf $2
@@ -39,13 +39,19 @@ user-link(){
 }
 
 DOTFILES=$HOME/.dotfiles
-# ==> oh-my-zsh installation ------------------------------------------------
-echo "==> zsh settings ---------------------------------------"
-user-install "oh-my-zsh" "$HOME/.oh-my-zsh" 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
+# ==> zsh conifg ------------------------------------------------
+echo "==> zsh config ---------------------------------------"
+user-install "oh-my-zsh" "-d $HOME/.oh-my-zsh" 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
 #user-install "zsh-syntax-highlighting" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
 #user-install "zsh-autosuggestions" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
 #user-link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
 #source $HOME/.zshrc
+
+# ==> vim config -----------------------------------------------
+echo "==> vim config ----------------------------------------"
+user-install "vim-plug" "-f $HOME/.vim/autoload/plug.vim" "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+user-link "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
+vim +PlugInstall
 
 # # ==> dotfiles settings ----------------------------------------------------
 # for file in `find $HOME/.dotfiles -name '*.symlink'`
