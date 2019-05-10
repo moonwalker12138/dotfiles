@@ -27,7 +27,7 @@ user-link(){
     if [[ $confirm =~ ^[Yy]$ ]]; then
         if [ -f $2 ]; then
             mv $2 $2.backup
-	fi
+        fi
         ln -fs $1 $2
         if [ $? -ne 0 ]; then
             echo "[user-link]create a symbolic link '$2' to '$1' failed!"
