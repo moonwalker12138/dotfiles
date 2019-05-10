@@ -42,12 +42,11 @@ DOTFILES=$HOME/.dotfiles
 # ==> zsh conifg ------------------------------------------------
 echo "==> zsh config ---------------------------------------"
 user-install "oh-my-zsh" "-d $HOME/.oh-my-zsh" 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
-#user-install "zsh-syntax-highlighting" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
-#user-install "zsh-autosuggestions" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-#user-link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
-#source $HOME/.zshrc
+user-install "zsh-syntax-highlighting" "-d $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+user-install "zsh-autosuggestions" "-d $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+user-link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
 
-# ==> vim config -----------------------------------------------
+==> vim config -----------------------------------------------
 echo "==> vim config ----------------------------------------"
 user-install "vim-plug" "-f $HOME/.vim/autoload/plug.vim" "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 user-link "$DOTFILES/vim/vimrc" "$HOME/.vimrc"

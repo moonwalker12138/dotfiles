@@ -11,15 +11,15 @@ call plug#begin('~/.vim/plugins')
 " Fundamental
 Plug 'scrooloose/nerdtree'
 " Plug 'Valloric/YouCompleteMe'
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 Plug 'ervandew/supertab'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'majutsushi/tagbar'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 Plug 'godlygeek/tabular'
 
 " Productive
