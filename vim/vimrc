@@ -12,7 +12,7 @@ call plug#begin('~/.vim/plugins')
 " Fundamental
 Plug 'scrooloose/nerdtree'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py'  }
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 " Plug 'ervandew/supertab'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'kien/ctrlp.vim'
