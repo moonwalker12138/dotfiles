@@ -29,8 +29,8 @@ elif [ `uname` = "Darwin" ]; then
 			# mac alias
             alias sshcl="ssh yf@10.214.33.165"
             alias sshzq="ssh yf@192.168.23.51"
-            alias sshpeggy="ssh yf@47.103.192.108 -p 6000"
-            alias sshelmo="ssh yf@47.103.192.108 -p 6001"
+            alias sshpeggy="ssh yf@47.103.9.181 -p 6000"
+            alias sshelmo="ssh yf@47.103.9.181 -p 6001"
             alias sshkg="ssh yf@120.27.214.45"
 			alias lc="leetcode"
 			alias lcpick="builtin cd ~/Code/leetcode && leetcode pick -gex"
