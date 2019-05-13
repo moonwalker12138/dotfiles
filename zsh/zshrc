@@ -158,6 +158,40 @@ function cd(){
     ls
 }
 
+function upload(){
+    case $1 in 
+        "elmo")
+            scp -r -P 6001 $2 yf@47.103.9.181:$3
+        ;;
+        "peggy")
+            scp -r -P 6000 $2 yf@47.103.9.181:$3
+        ;;
+        "cl")
+            scp -r $2 yf@10.214.33.165:$3
+        ;;
+        "kg")
+            scp -r $2 yf@120.27.214.45:$3
+        ;;
+    esac
+}
+
+function download(){
+    case $1 in 
+        "elmo")
+            scp -r -P 6001 yf@47.103.9.181:$2 $3 
+        ;;
+        "peggy")
+            scp -r -P 6000 yf@47.103.9.181:$2 $3 
+        ;;
+        "cl")
+            scp -r yf@10.214.33.165:$2 $3 
+        ;;
+        "kg")
+            scp -r yf@120.27.214.45:$2 $3 
+        ;;
+    esac
+}
+
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment 202 0 "%(!.%{%F{yellow}%}.)%n@%m"
