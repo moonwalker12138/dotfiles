@@ -1,46 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Multiple-OS Settings
-if [ `uname` = "Linux" ]; then
-    # all linux server config
-    export ANACONDAPATH=$HOME/app/anaconda3
-    export PYTHONPATH=$PYTHONPATH:$ANACONDAPATH/lib/python3.6/site-packages
-
-    case `hostname` in
-        "peggy")
-            export PATH=$ANACONDAPATH/bin:$PATH
-        ;;
-        "elmo")
-            export JAVA_HOME=/usr/java/jre1.8.0_211
-            export PATH=$JAVA_HOME/bin:$ANACONDAPATH/bin:$PATH
-        ;;
-        "xenial-165")
-            export PATH=$ANACONDAPATH/bin:$PATH
-        ;;
-        "iZbp11i2v86dja5a7kn5apZ")
-		;;
-    esac
-elif [ `uname` = "Darwin" ]; then
-    case `hostname` in 
-        "YF-MBP.local")
-			# mac path
-			export PATH=$HOME/.nvm/versions/node/v10.15.3/bin/:/usr/local/Homebrew/bin:$HOME/bin:/usr/local/bin:$PATH
-			# mac alias
-            alias sshcl="ssh yf@10.214.33.165"
-            alias sshzq="ssh yf@192.168.23.51"
-            alias sshpeggy="ssh yf@47.103.9.181 -p 6000"
-            alias sshelmo="ssh yf@47.103.9.181 -p 6001"
-            alias sshkg="ssh yf@120.27.214.45"
-			alias lc="leetcode"
-			alias lcpick="builtin cd ~/Code/leetcode && leetcode pick -gex"
-			alias lctest="leetcode test %"
-			alias lcpush="leetcode push %"
-        ;;
-    esac
-fi
-
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
@@ -107,6 +67,9 @@ plugins=(git z colored-man-pages zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+# fzf 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -132,16 +95,12 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
+
+# ==> alias -------------------------------------------------------
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias h="history"
 alias zrc="vim ~/.zshrc"
 alias vrc="vim ~/.vimrc"
-alias c="clear"
-alias vi="vim"
-alias l="ls -a"
-alias q="logout"
 # git alias
 alias ga="git add"
 alias gaa="git add ."
@@ -151,8 +110,13 @@ alias gd="git diff"
 alias glog="git log --oneline --graph"
 alias grlog="git reflog"
 alias gst="git status -s"
-#
-function cd(){
+
+# ==> general settings -------------------------------------------
+set -o emacs
+bindkey '^ ' autosuggest-accept # zsh plugin zsh-autosuggestions config
+
+# ==> user-defined functions --------------------------------------
+function cdd(){
     #emulate _LR zsh
     builtin cd $@ &&
     ls
@@ -192,6 +156,7 @@ function download(){
     esac
 }
 
+# ==> ZSH_THEME agnoster settings --------------------------------------------
 prompt_context() {
   if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
     prompt_segment 202 0 "%(!.%{%F{yellow}%}.)%n@%m"
@@ -239,11 +204,57 @@ build_prompt() {
   prompt_end
 }
 
-set -o emacs
 
-bindkey '^ ' autosuggest-accept
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# ==> Multiple-OS Settings ----------------------------------------------
+if [ `uname` = "Linux" ]; then
+    # all linux server config
+    export ANACONDAPATH=$HOME/app/anaconda3
+    export PYTHONPATH=$PYTHONPATH:$ANACONDAPATH/lib/python3.6/site-packages
+
+    case `hostname` in
+        "peggy")
+            export PATH=$ANACONDAPATH/bin:$PATH
+        ;;
+        "elmo")
+            export JAVA_HOME=/usr/java/jre1.8.0_211
+            export PATH=$JAVA_HOME/bin:$ANACONDAPATH/bin:$PATH
+        ;;
+        "xenial-165")
+            export PATH=$ANACONDAPATH/bin:$PATH
+        ;;
+        "iZbp11i2v86dja5a7kn5apZ")
+		;;
+    esac
+elif [ `uname` = "Darwin" ]; then
+    case `hostname` in 
+        "YF-MBP.local")
+			# mac path
+			export PATH=$HOME/.nvm/versions/node/v10.15.3/bin/:/usr/local/Homebrew/bin:$HOME/bin:/usr/local/bin:$PATH
+			# mac alias
+            alias sshcl="ssh yf@10.214.33.165"
+            alias sshzq="ssh yf@192.168.23.51"
+            alias sshpeggy="ssh yf@47.103.9.181 -p 6000"
+            alias sshelmo="ssh yf@47.103.9.181 -p 6001"
+            alias sshkg="ssh yf@120.27.214.45"
+			alias lc="leetcode"
+			alias lcpick="builtin cd ~/Code/leetcode && leetcode pick -gex"
+			alias lctest="leetcode test %"
+			alias lcpush="leetcode push %"
+            # disable prompt_context
+            build_prompt() {
+              RETVAL=$?
+              prompt_dir
+              prompt_git
+              prompt_virtualenv
+              prompt_status
+              prompt_bzr
+              prompt_hg
+              prompt_end
+            }
+        ;;
+    esac
+fi
 
 
 # # >>> conda initialize >>>
