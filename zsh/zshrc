@@ -159,18 +159,18 @@ function cd(){
 }
 
 function upload(){
-    case $1 in 
+    case $2 in 
         "elmo")
-            scp -r -P 6001 $2 yf@47.103.9.181:$3
+            scp -r -P 6001 $1 yf@47.103.9.181:/home/yf/
         ;;
         "peggy")
-            scp -r -P 6000 $2 yf@47.103.9.181:$3
+            scp -r -P 6000 $1 yf@47.103.9.181:/home/yf/
         ;;
         "cl")
-            scp -r $2 yf@10.214.33.165:$3
+            scp -r $1 yf@10.214.33.165:/home/yf/
         ;;
         "kg")
-            scp -r $2 yf@120.27.214.45:$3
+            scp -r $1 yf@120.27.214.45:/home/yf/
         ;;
     esac
 }
