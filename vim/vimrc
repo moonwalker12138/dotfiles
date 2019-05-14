@@ -265,7 +265,7 @@ colorscheme molokai
 
 " search 
 set ignorecase
-set hlsearch
+" set hlsearch
 set incsearch
 set smartcase
 
