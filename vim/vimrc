@@ -69,7 +69,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 
 " AsyncRun Settings
 let g:asyncrun_open = 8
-noremap <F5> :w \| AsyncRun python %<cr>
+noremap <leader>r :w \| AsyncRun python %<cr>
 noremap <leader>s :AsyncStop<cr>
 
 " ctrlp Settings
