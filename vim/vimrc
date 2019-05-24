@@ -283,13 +283,17 @@ set expandtab
 
 
 " ==> Key mapping -----------------------------------------------------------------
-nnoremap <silent><backspace> :nohl<cr>
+" nnoremap <silent><backspace> :nohl<cr>
 
 " keys to move around the windows
 inoremap <c-h> <left>
 inoremap <c-j> <down>
 inoremap <c-k> <up>
 inoremap <c-l> <right>
+
+" leader
+let mapleader = "\<Space>"
+nnoremap <leader>w :w<CR>
 
 " switch buffers
 noremap <silent><leader>[ :bp<cr>
