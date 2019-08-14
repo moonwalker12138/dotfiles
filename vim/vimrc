@@ -11,17 +11,17 @@ call plug#begin('~/.vim/plugins')
 
 " Fundamental
 Plug 'scrooloose/nerdtree'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " Plug 'davidhalter/jedi-vim'
 " Plug 'ervandew/supertab'
-Plug 'skywind3000/asyncrun.vim'
+" Plug 'skywind3000/asyncrun.vim'
 Plug 'kien/ctrlp.vim'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
-Plug 'godlygeek/tabular'
+" Plug 'godlygeek/tabular'
 
 " Productive
 Plug 'tpope/vim-commentary'
@@ -32,11 +32,11 @@ Plug 'tpope/vim-surround'
 " Appearance
 Plug 'luochen1990/rainbow'
 Plug 'vim-airline/vim-airline'
-Plug 'edkolev/tmuxline.vim'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'edkolev/tmuxline.vim'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Funny
-Plug 'guns/xterm-color-table.vim'
+" Plug 'guns/xterm-color-table.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -248,7 +248,7 @@ set encoding=utf-8
 " set laststatus=2
 
 " colorscheme
-colorscheme molokai
+" colorscheme molokai
 " colorscheme solarized8_flat
 " let g:solarized_termcolors=256
 " colorscheme solarized
