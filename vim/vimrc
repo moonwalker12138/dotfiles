@@ -11,10 +11,7 @@ call plug#begin('~/.vim/plugins')
 
 " Fundamental
 Plug 'scrooloose/nerdtree'
-" Plug 'davidhalter/jedi-vim'
-" Plug 'ervandew/supertab'
-Plug 'kien/ctrlp.vim'
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
 
@@ -57,23 +54,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
-" ctrlp Settings
-" Change the default mapping and the default command to invoke CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-" set local working directory
-let g:ctrlp_working_path_mode = 'ra'
-" Exclude files and directories 
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-" let g:ctrlp_custom_ignore = {
-"   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-"   \ 'file': '\v\.(exe|so|dll)$',
-"   \ 'link': 'some_bad_symbolic_links',
-"   \ }
-" Use a custom file listing command
-let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
-
 " vim-airline Settings
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -115,11 +95,6 @@ let g:rainbow_conf = {
 	\		'css': 0,
 	\	}
 	\}
-
-" supertab config
-" let g:SuperTabDefaultCompletionType = "<c-n>"
-" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 
 " majutsushi/tagbar Settings
 nmap <F8> :TagbarToggle<CR>
