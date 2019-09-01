@@ -49,12 +49,22 @@ if [[ $confirm =~ ^[Yy]$ ]]; then
     user-link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
 fi
 
-# ==> vim config -----------------------------------------------
-read -p "vim config, continue? (Y/N): " confirm
+# # ==> vim config -----------------------------------------------
+# read -p "vim config, continue? (Y/N): " confirm
+# if [[ $confirm =~ ^[Yy]$ ]]; then
+#     echo "==> vim config ----------------------------------------"
+#     user-install "vim-plug" "-f $HOME/.vim/autoload/plug.vim" "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+#     user-link "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
+# fi
+
+# ==> neovim config -----------------------------------------------
+read -p "neovim config, continue? (Y/N): " confirm
 if [[ $confirm =~ ^[Yy]$ ]]; then
-    echo "==> vim config ----------------------------------------"
-    user-install "vim-plug" "-f $HOME/.vim/autoload/plug.vim" "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    user-link "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
+    echo "==> neovim config ----------------------------------------"
+    export PATH=$DOTFILES:$PATH
+    mkdir -p $HOME/.config/nvim
+    user-install "vim-plug" "-f $HOME/.local/share/nvim/site/autoload/plug.vim" " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim "
+    user-link "$DOTFILES/vim/vimrc" "$HOME/.config/nvim/init.vim"
 fi
 
 # ==> tmux config -----------------------------------------------

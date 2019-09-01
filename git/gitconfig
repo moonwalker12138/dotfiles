@@ -6,5 +6,3 @@
 	pager = cat
 [merge]
 	tool = vimdiff
-; [http]
-; 	postBuffer = 524288000
