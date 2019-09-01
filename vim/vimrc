@@ -15,6 +15,12 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
 
+" Auto completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/neco-vim'
+Plug 'deoplete-plugins/deoplete-zsh'
+
 " Productive
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
@@ -131,7 +137,7 @@ vmap <space><space> <Plug>(easymotion-s)
 
 " deoplete Settings
 let g:deoplete#enable_at_startup = 1
-let g:python3_host_prog = "$HOME/app/anaconda3/bin/python"
+let g:python3_host_prog = expand("$HOME/app/anaconda3/bin/python")
 
 
 " ==> General Settings ------------------------------------------------
@@ -220,6 +226,7 @@ noremap <silent><space>q :q<cr>
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
+nnoremap <silent><space>; :terminal<cr>
 
 " important!!!! The command below must be placed at the end of the .vimrc file
 " set noesckeys
