@@ -1,5 +1,5 @@
 set nocompatible	" Use Vim defaults instead of 100% vi compatibility
-
+" set termguicolors
 
 " ==> Plugins ------------------------------------------------------------------
 " Specify a directory for plugins
@@ -228,5 +228,10 @@ if has('nvim')
 endif
 nnoremap <silent><space>; :terminal<cr>
 
+if has("gui_vimr")
+  " Here goes some VimR specific settings like
+  colorscheme evening
+
+endif
 " important!!!! The command below must be placed at the end of the .vimrc file
 " set noesckeys

@@ -129,3 +129,4 @@ bindkey '^ ' autosuggest-accept
 
 
 
+source ~/.bash_profile
