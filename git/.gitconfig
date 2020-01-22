@@ -4,5 +4,6 @@
 [core]
 	editor = vim
 	pager = cat
+	autocrlf = input
 [merge]
 	tool = vimdiff

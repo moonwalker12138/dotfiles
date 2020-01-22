@@ -46,7 +46,7 @@ if [[ $confirm =~ ^[Yy]$ ]]; then
     user-install "oh-my-zsh" "-d $HOME/.oh-my-zsh" 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
     user-install "zsh-syntax-highlighting" "-d $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
     user-install "zsh-autosuggestions" "-d $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-    user-link "$DOTFILES/zsh/zshrc" "$HOME/.zshrc"
+    user-link "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
 fi
 
 # # ==> vim config -----------------------------------------------
@@ -64,22 +64,22 @@ if [[ $confirm =~ ^[Yy]$ ]]; then
     export PATH=$DOTFILES:$PATH
     mkdir -p $HOME/.config/nvim
     user-install "vim-plug" "-f $HOME/.local/share/nvim/site/autoload/plug.vim" " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim "
-    user-link "$DOTFILES/vim/vimrc" "$HOME/.config/nvim/init.vim"
+    user-link "$DOTFILES/vim/.vimrc" "$HOME/.config/nvim/init.vim"
 fi
 
 # ==> tmux config -----------------------------------------------
 read -p "tmux config, continue? (Y/N): " confirm
 if [[ $confirm =~ ^[Yy]$ ]]; then
     echo "==> tmux config ---------------------------------------"
-    user-link "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
+    user-link "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
 fi
 
 # ==> git config -----------------------------------------------
 read -p "git config, continue? (Y/N): " confirm
 if [[ $confirm =~ ^[Yy]$ ]]; then
     echo "==> git config -----------------------------------------"
-    user-link "$DOTFILES/git/gitignore" "$HOME/.gitignore"
-    user-link "$DOTFILES/git/gitconfig" "$HOME/.gitconfig"
+    user-link "$DOTFILES/git/.gitignore" "$HOME/.gitignore"
+    user-link "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
 fi
 
 echo "done!"

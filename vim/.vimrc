@@ -16,10 +16,10 @@ Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
 
 " Auto completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/neco-vim'
-Plug 'deoplete-plugins/deoplete-zsh'
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'zchee/deoplete-jedi'
+" Plug 'Shougo/neco-vim'
+" Plug 'deoplete-plugins/deoplete-zsh'
 
 " Productive
 Plug 'tpope/vim-commentary'
@@ -146,7 +146,7 @@ syntax on
 set modelines=0		
 set backspace=2		" more powerful backspacing
 set nu!
-set relativenumber
+" set relativenumber
 set autoindent
 set cursorline
 set clipboard=unnamed " 设置vim中默认使用选择缓冲区寄存器 "*

@@ -1,7 +1,8 @@
 # If you come from bash you might have to change your $PATH.
+export PATH=~/app/neo4j/bin/:$PATH
 export DOTFILES=$HOME/.dotfiles
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
-    export PATH=DOTFILES:$PATH
+    export PATH=$DOTFILES:$PATH
 fi
 
 # Path to your oh-my-zsh installation.
@@ -117,6 +118,8 @@ alias gd="git diff"
 alias glog="git log --oneline --graph"
 alias grlog="git reflog"
 alias gst="git status -s"
+#ssh
+alias sshbert="ssh -p 6002 yf@101.132.131.30"
 
 # local alias and PATH
 [ -f ~/.zsh_local ] && source ~/.zsh_local
@@ -129,4 +132,6 @@ bindkey '^ ' autosuggest-accept
 
 
 
-source ~/.bash_profile
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
