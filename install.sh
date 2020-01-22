@@ -21,18 +21,19 @@ user-install(){
     fi 
 }
 
-user-link(){
-    read -p "create a symbolic link '$2' to '$1'? (Y/N): " confirm
+user-copy(){
+    read -p "copy '$1' to '$2'? (Y/N): " confirm
     if [[ $confirm =~ ^[Yy]$ ]]; then
         if [ -f $2 ]; then
             mv $2 $2.backup
         fi
-        ln -fs $1 $2
+        # ln -fs $1 $2
+        cp $1 $2
         if [ $? -ne 0 ]; then
-            echo "[user-link]create a symbolic link '$2' to '$1' failed!"
+            echo "[user-copy] copy '$1' to '$2' failed!"
             exit 1
         else
-            echo "[user-link]create a symbolic link '$2' to '$1' succeeded!"
+            echo "[user-copy] copy '$1' to '$2' succeeded!"
         fi
     fi
 }
@@ -46,16 +47,8 @@ if [[ $confirm =~ ^[Yy]$ ]]; then
     user-install "oh-my-zsh" "-d $HOME/.oh-my-zsh" 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"'
     user-install "zsh-syntax-highlighting" "-d $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" "git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
     user-install "zsh-autosuggestions" "-d $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" "git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
-    user-link "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
+    user-copy "$DOTFILES/zsh/.zshrc" "$HOME/.zshrc"
 fi
-
-# # ==> vim config -----------------------------------------------
-# read -p "vim config, continue? (Y/N): " confirm
-# if [[ $confirm =~ ^[Yy]$ ]]; then
-#     echo "==> vim config ----------------------------------------"
-#     user-install "vim-plug" "-f $HOME/.vim/autoload/plug.vim" "curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-#     user-link "$DOTFILES/vim/vimrc" "$HOME/.vimrc"
-# fi
 
 # ==> neovim config -----------------------------------------------
 read -p "neovim config, continue? (Y/N): " confirm
@@ -64,22 +57,23 @@ if [[ $confirm =~ ^[Yy]$ ]]; then
     export PATH=$DOTFILES:$PATH
     mkdir -p $HOME/.config/nvim
     user-install "vim-plug" "-f $HOME/.local/share/nvim/site/autoload/plug.vim" " curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim "
-    user-link "$DOTFILES/vim/.vimrc" "$HOME/.config/nvim/init.vim"
+    user-copy "$DOTFILES/vim/.vimrc" "$HOME/.vimrc"
+    ln -s $HOME/.vimrc $HOME/.config/nvim/init.vim
 fi
 
 # ==> tmux config -----------------------------------------------
 read -p "tmux config, continue? (Y/N): " confirm
 if [[ $confirm =~ ^[Yy]$ ]]; then
     echo "==> tmux config ---------------------------------------"
-    user-link "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
+    user-copy "$DOTFILES/tmux/.tmux.conf" "$HOME/.tmux.conf"
 fi
 
 # ==> git config -----------------------------------------------
 read -p "git config, continue? (Y/N): " confirm
 if [[ $confirm =~ ^[Yy]$ ]]; then
     echo "==> git config -----------------------------------------"
-    user-link "$DOTFILES/git/.gitignore" "$HOME/.gitignore"
-    user-link "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
+    user-copy "$DOTFILES/git/.gitignore" "$HOME/.gitignore"
+    user-copy "$DOTFILES/git/.gitconfig" "$HOME/.gitconfig"
 fi
 
 echo "done!"

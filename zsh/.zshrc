@@ -1,9 +1,4 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=~/app/neo4j/bin/:$PATH
-export DOTFILES=$HOME/.dotfiles
-if [ "$(uname 2> /dev/null)" = "Linux" ]; then
-    export PATH=$DOTFILES:$PATH
-fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -71,9 +66,6 @@ plugins=(z zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-# fzf 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -104,8 +96,6 @@ export LC_ALL=en_US.UTF-8
 #
 
 # ==> alias -------------------------------------------------------
-alias vi="nvim"
-alias vim="nvim"
 alias zrc="nvim ~/.zshrc"
 alias vrc="nvim ~/.vimrc"
 alias trc="nvim ~/.tmux.conf"
@@ -118,20 +108,8 @@ alias gd="git diff"
 alias glog="git log --oneline --graph"
 alias grlog="git reflog"
 alias gst="git status -s"
-#ssh
-alias sshbert="ssh -p 6002 yf@101.132.131.30"
-
-# local alias and PATH
-[ -f ~/.zsh_local ] && source ~/.zsh_local
 
 # ==> general settings -------------------------------------------
 set -o emacs
 # zsh plugin zsh-autosuggestions config
 bindkey '^ ' autosuggest-accept 
-
-
-
-
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-

@@ -15,12 +15,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
 
-" Auto completion
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-jedi'
-" Plug 'Shougo/neco-vim'
-" Plug 'deoplete-plugins/deoplete-zsh'
-
 " Productive
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
@@ -79,7 +73,7 @@ call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 
 " vim-airline Settings
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 "let g:airline_theme='molokai_original'
@@ -92,7 +86,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 "let g:airline_right_alt_sep = '⮃'
 "let g:airline_symbols.branch = '⭠'
 "let g:airline_symbols.readonly = '⭤'
-
+"
 " rainbow config
 let g:rainbow_active = 1
 let g:rainbow_conf = {
