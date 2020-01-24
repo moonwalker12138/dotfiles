@@ -2,7 +2,7 @@
 
 ## 下载 dotfiles
 ```
-git clone https://github.com/moonwalker12138/dotfiles.git ~/.dotfiles
+git clone --depth 1 https://github.com/moonwalker12138/dotfiles.git ~/.dotfiles
 ```
 
 ## zsh 配置
