@@ -70,9 +70,23 @@ cp ~/.dotfiles/.tmux.conf ~/.tmux.conf
 tmux source ~/.tmux.conf
 ```
 
-# git 配置
+## git 配置
 
 - gitconfig
 ```
 cp ~/.dotfiles/.gitconfig ~/.gitconfig
+```
+
+## pip 配置
+
+- pip.conf
+```
+cp ~/.dotfiles/pip.conf ~/.pip/pip.conf
+```
+
+## conda 配置
+
+- .condarc
+```
+cp ~/.dotfiles/.condarc ~/.condarc
 ```
