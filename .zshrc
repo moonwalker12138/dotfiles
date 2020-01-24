@@ -96,9 +96,9 @@ export LC_ALL=en_US.UTF-8
 #
 
 # ==> alias -------------------------------------------------------
-alias zrc="nvim ~/.zshrc"
-alias vrc="nvim ~/.vimrc"
-alias trc="nvim ~/.tmux.conf"
+alias zrc="vim ~/.zshrc"
+alias vrc="vim ~/.vimrc"
+alias trc="vim ~/.tmux.conf"
 # git alias
 alias ga="git add"
 alias gaa="git add ."
