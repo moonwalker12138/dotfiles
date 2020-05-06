@@ -229,3 +229,4 @@ if has("gui_vimr")
 endif
 " important!!!! The command below must be placed at the end of the .vimrc file
 " set noesckeys
+
