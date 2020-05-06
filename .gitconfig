@@ -7,3 +7,4 @@
 	autocrlf = input
 [merge]
 	tool = vimdiff
+ 
